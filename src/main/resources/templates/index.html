@@ -1,0 +1,60 @@
+<html>
+    <head> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+        
+    </head>
+    <body>
+
+
+        <div class="ui container">
+            <form
+                th:action="@{/criarCartorio}"
+                th:object="${usuario}" 
+                method="POST" 
+                class="ui form"
+            >
+                <div class="field">
+                    <label> Nome </label>
+                    <input th:field="${cartorio.nomeCartorio}" type="text" name="nomeCartório" placeholder="Nome do Cartório"/>
+                </div>
+                <div class="field">
+                    <label> Endereço </label>
+                    <input th:field="${cartorio.enderecoCartorio}" type="text" name="enderecoCartório" placeholder="Endereço do Cartório"/>
+                </div>
+                <div>
+                    <button class="ui button primary" type="submit">Criar</button>
+                </div>
+            </form>
+
+            <table class="ui celled table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Endereço</th>
+                        <th>Certidoes</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="cartorio : ${cartorios}">
+                        <td th:text="${cartorio.id}"></td>
+                        <td th:text="${cartorio.nomeCartorio}"></td>
+                        <td th:text="${cartorio.enderecoCartorio}"></td>
+                        <td></td>
+                        <td>
+                            <a 
+                                class="ui button primary" 
+                                th:href="@{'/deletarCartorio/' + ${cartorio.id}}"
+                            > Deletar </a>
+                            <a 
+                                class="ui button negative" 
+                                th:href="@{'/editarCartorio/' + ${cartorio.id}}"
+                            > Editar </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
