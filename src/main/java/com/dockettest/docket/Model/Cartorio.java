@@ -1,4 +1,4 @@
-package com.dockettest.docket.entity;
+package com.dockettest.docket.Model;
 
 import java.util.Set;
 

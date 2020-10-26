@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    </head>
+    <body>
+        <div class="ui container">
+            <form
+                th:action="@{/criarCartorio}"
+                th:object="${usuario}" 
+                method="POST" 
+                class="ui form"
+            >
+                <div class="field">
+                    <label> Nome </label>
+                    <input th:field="${cartorio.nomeCartorio}" type="text" name="nomeCartório" placeholder="Nome do Cartório"/>
+                </div>
+                <div class="field">
+                    <label> Endereço </label>
+                    <input th:field="${cartorio.enderecoCartorio}" type="text" name="enderecoCartório" placeholder="Endereço do Cartório"/>
+                </div>
+                <div>
+                    <button class="ui button primary" type="submit">Criar</button>
+                </div>
+            </form>
+    </body>
+</html>

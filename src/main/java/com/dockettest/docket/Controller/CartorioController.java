@@ -1,6 +1,6 @@
 package com.dockettest.docket.Controller;
 
-import com.dockettest.docket.entity.Cartorio;
+import com.dockettest.docket.Model.Cartorio;
 import com.dockettest.docket.repository.CartorioRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class CartorioController {
@@ -16,20 +17,25 @@ public class CartorioController {
     @Autowired
     CartorioRepository cartorioRepositorio;
 
+
+    @RequestMapping("/criarCartorio")
+    public String pageCriarCartorio(Model model, Cartorio cartorio){
+        model.addAttribute("cartorio", new Cartorio());
+        return "create";
+    }
     @GetMapping
     public String index(Model model, Cartorio cartorio) {
         model.addAttribute("cartorio", new Cartorio());
         model.addAttribute("cartorios", cartorioRepositorio.findAll() );
         return "index";
-    }
-
+    }    
     @PostMapping("/criarCartorio")
-    public String criarCartorio(Model model, Cartorio cartorio){
+    public String metodoCriarCartorio(Model model, Cartorio cartorio){
         cartorioRepositorio.save(cartorio);        
         
         model.addAttribute("cartorio", new Cartorio());
         model.addAttribute("cartorios", cartorioRepositorio.findAll() );
-        return "index";
+        return "redirect:/index";
     }
     @GetMapping("/editarCartorio/{id}")
     public String editarCartorio(Model model, @PathVariable(name="id") Long id){
@@ -40,8 +46,6 @@ public class CartorioController {
         model.addAttribute("cartorios", cartorioRepositorio.findAll());
         return "index";
     }
-
-
     @GetMapping("/deletarCartorio/{id}")
     public String deletarCartorio(Model model, @PathVariable(name="id") Long id) {
         Cartorio cartorioParaDeletar = cartorioRepositorio.findById(id).get();

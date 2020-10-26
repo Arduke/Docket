@@ -1,6 +1,6 @@
 package com.dockettest.docket.repository;
 
-import com.dockettest.docket.entity.Cartorio;
+import com.dockettest.docket.Model.Cartorio;
 
 import org.springframework.data.repository.CrudRepository;
 

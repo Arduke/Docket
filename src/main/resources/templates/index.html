@@ -2,30 +2,37 @@
     <head> 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
         
+        <style type="text/css">
+            body {
+            padding: 15px;
+            background: #545789;
+            }
+            .formDocket{
+                padding-top: 20px;
+            }
+            .headerDocket{
+                color: #f3f3f3;
+                font-size: x-large;
+            }
+        </style>
     </head>
     <body>
-
-
-        <div class="ui container">
-            <form
-                th:action="@{/criarCartorio}"
-                th:object="${usuario}" 
-                method="POST" 
-                class="ui form"
-            >
-                <div class="field">
-                    <label> Nome </label>
-                    <input th:field="${cartorio.nomeCartorio}" type="text" name="nomeCartório" placeholder="Nome do Cartório"/>
+        <div class="menuDocket column">
+            <div class="ui menu">
+                <div class="header item">
+                    <img src="https://www.kaszek.com/wp-content/uploads/2019/03/Docket.png"/>
                 </div>
-                <div class="field">
-                    <label> Endereço </label>
-                    <input th:field="${cartorio.enderecoCartorio}" type="text" name="enderecoCartório" placeholder="Endereço do Cartório"/>
-                </div>
-                <div>
-                    <button class="ui button primary" type="submit">Criar</button>
-                </div>
-            </form>
-
+                <a class="item">Cartórios</a>
+                <a class="item">Certidões</a>
+                <a class="item">Novo Cartório</a>
+                <a class="item">Nova Certidão</a>
+            </div>
+        </div>
+        
+        <div class="formDocket column">
+            <div class="headerDocket ui huge header">
+                Lista de Cartórios
+            </div>
             <table class="ui celled table">
                 <thead>
                     <tr>

@@ -1,6 +1,6 @@
 package com.dockettest.docket.repository;
 
-import com.dockettest.docket.entity.Certidao;
+import com.dockettest.docket.Model.Certidao;
 
 import org.springframework.data.repository.CrudRepository;
 
