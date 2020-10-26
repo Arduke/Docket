@@ -1,9 +1,40 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+        <style type="text/css">
+            body {
+            padding: 15px;
+            background: #545789;
+            }
+            .formDocket{
+                padding-top: 20px;
+            }
+            .headerDocket{
+                color: #f3f3f3;
+                font-size: x-large;
+            }
+            .container{
+                padding-top:20px;
+            }
+        </style>
     </head>
     <body>
+        <div class="menuDocket column">
+            <div class="ui menu">
+                <div class="header item">
+                    <img href="/" src="https://www.kaszek.com/wp-content/uploads/2019/03/Docket.png"/>
+                </div>
+                <a href ="/" class="item">Cartórios</a>
+                <a href ="" class="item">Certidões</a>
+                <a href ="/criarCartorio" class="item">Novo Cartório</a>
+                <a class="item">Nova Certidão</a>
+            </div>
+        </div>
+        
         <div class="ui container">
+            <div class="headerDocket ui huge header">
+                Cadastrar Cartório
+            </div>
             <form
                 th:action="@{/criarCartorio}"
                 th:object="${usuario}" 

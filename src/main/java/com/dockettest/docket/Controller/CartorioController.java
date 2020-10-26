@@ -17,7 +17,8 @@ public class CartorioController {
     @Autowired
     CartorioRepository cartorioRepositorio;
 
-
+    //Acredito que esse método é desnecessario.
+    //É necessario sim, não achei outra forma de chamar a tela create ainda.
     @RequestMapping("/criarCartorio")
     public String pageCriarCartorio(Model model, Cartorio cartorio){
         model.addAttribute("cartorio", new Cartorio());
@@ -35,7 +36,7 @@ public class CartorioController {
         
         model.addAttribute("cartorio", new Cartorio());
         model.addAttribute("cartorios", cartorioRepositorio.findAll() );
-        return "redirect:/index";
+        return "index";
     }
     @GetMapping("/editarCartorio/{id}")
     public String editarCartorio(Model model, @PathVariable(name="id") Long id){
