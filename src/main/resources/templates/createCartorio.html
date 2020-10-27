@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+        <style type="text/css">
+            body {
+            padding: 15px;
+            background: #545789;
+            }
+            .formDocket{
+                padding-top: 20px;
+            }
+            .headerDocket{
+                color: #f3f3f3;
+                font-size: x-large;
+            }
+            .container{
+                padding:20px 8px 10px 8px;
+                background-color: #eaeae9;
+                border-radius: 10px;
+                align-content: center;
+            }
+            .menuDocket{
+                padding-top:10px;
+                padding-bottom: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="menuDocket column">
+            <div class="ui menu">
+                <div class="header item">
+                    <img href="/" src="https://www.kaszek.com/wp-content/uploads/2019/03/Docket.png"/>
+                </div>
+                <a href ="/" class="item">Cartórios</a>
+                <a href ="/criarCartorio" class="item">Novo Cartório</a>
+            </div>
+        </div>
+        
+        <div class="ui container">
+            <div class="headerDocket ui huge header">
+                <i class="paste icon"></i>
+                Cadastrar Cartório
+            </div>
+            <form
+                th:action="@{/criarCartorio}"
+                th:object="${usuario}" 
+                method="POST" 
+                class="ui form"
+            >
+                <div class="field">
+                    <label> Nome </label>
+                    <input th:field="${cartorio.nomeCartorio}" type="text" name="nomeCartório" placeholder="Nome do Cartório"/>
+                </div>
+                <div class="field">
+                    <label> Endereço </label>
+                    <input th:field="${cartorio.enderecoCartorio}" type="text" name="enderecoCartório" placeholder="Endereço do Cartório"/>
+                </div>
+                <div>
+                    <button class="ui button primary" type="submit">Criar</button>
+                    <a href="/" class="ui button negative"> Cancelar </a>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

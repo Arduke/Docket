@@ -17,19 +17,36 @@ public class CartorioController {
     @Autowired
     CartorioRepository cartorioRepositorio;
 
-    //Acredito que esse método é desnecessario.
-    //É necessario sim, não achei outra forma de chamar a tela create ainda.
+    //Request para as telas
+
+    //Tela para criar cartório
     @RequestMapping("/criarCartorio")
     public String pageCriarCartorio(Model model, Cartorio cartorio){
         model.addAttribute("cartorio", new Cartorio());
-        return "create";
+        return "createCartorio";
     }
+    //Tela inicial apresentando a lista de cartórios
     @GetMapping
-    public String index(Model model, Cartorio cartorio) {
-        model.addAttribute("cartorio", new Cartorio());
+    public String index(Model model) {
         model.addAttribute("cartorios", cartorioRepositorio.findAll() );
         return "index";
-    }    
+    }  
+    //Tela para editar cartório selecionado
+    @GetMapping("/editarCartorio/{id}")
+    public String editarCartorio(Model model, @PathVariable(name="id") Long id){
+        Cartorio cartorioParaEditar = cartorioRepositorio.findById(id).get();
+        
+        
+        model.addAttribute("cartorio", cartorioParaEditar);
+        model.addAttribute("cartorios", cartorioRepositorio.findAll());
+        return "editCartorio";
+    }
+    
+    
+    //Request para alterar banco de dados
+
+    //Criar e editar cartório no banco de dados    
+    //Nota: ainda preciso descobrir como retornar um endereço "/"
     @PostMapping("/criarCartorio")
     public String metodoCriarCartorio(Model model, Cartorio cartorio){
         cartorioRepositorio.save(cartorio);        
@@ -38,21 +55,14 @@ public class CartorioController {
         model.addAttribute("cartorios", cartorioRepositorio.findAll() );
         return "index";
     }
-    @GetMapping("/editarCartorio/{id}")
-    public String editarCartorio(Model model, @PathVariable(name="id") Long id){
-        Cartorio cartorioParaEditar = cartorioRepositorio.findById(id).get();
-        
-        
-        model.addAttribute("cartorio", cartorioParaEditar);
-        model.addAttribute("cartorios", cartorioRepositorio.findAll());
-        return "index";
-    }
+    
+    //Deletar cartório no banco de dados
+    //Nota: ainda preciso descobrir como retornar um endereço "/"
     @GetMapping("/deletarCartorio/{id}")
     public String deletarCartorio(Model model, @PathVariable(name="id") Long id) {
         Cartorio cartorioParaDeletar = cartorioRepositorio.findById(id).get();
         
         cartorioRepositorio.deleteById(cartorioParaDeletar.getId());
-        model.addAttribute("cartorio", new Cartorio());
         model.addAttribute("cartorios", cartorioRepositorio.findAll());
         return "index";
     }

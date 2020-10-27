@@ -8,29 +8,38 @@
             background: #545789;
             }
             .formDocket{
-                padding-top: 20px;
+                padding-top: 20px;    
             }
-            .headerDocket{
-                color: #f3f3f3;
-                font-size: x-large;
+            .container{
+                padding:20px 5px 10px 5px;
+                background-color: #eaeae9;
+                border-radius: 10px;
+                align-content: center;
+            }
+            .menuDocket{
+                padding-top:10px;
+                padding-bottom: 30px;
+            }
+            .button{
+                display: block;
+                margin-right: 50%;
             }
         </style>
     </head>
     <body>
-        <div class="menuDocket column">
+        <div class="menuDocket">
             <div class="ui menu">
                 <div class="header item">
                     <img href="/" src="https://www.kaszek.com/wp-content/uploads/2019/03/Docket.png"/>
                 </div>
                 <a href ="/" class="item">Cartórios</a>
-                <a href ="" class="item">Certidões</a>
                 <a href ="/criarCartorio" class="item">Novo Cartório</a>
-                <a class="item">Nova Certidão</a>
             </div>
         </div>
         
-        <div class="formDocket column">
+        <div class="ui container">
             <div class="headerDocket ui huge header">
+                <i class="clipboard list icon"></i>
                 Lista de Cartórios
             </div>
             <table class="ui celled table">
@@ -39,7 +48,7 @@
                         <th>Id</th>
                         <th>Nome</th>
                         <th>Endereço</th>
-                        <th>Certidoes</th>
+                        <th>Certidões</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -48,16 +57,25 @@
                         <td th:text="${cartorio.id}"></td>
                         <td th:text="${cartorio.nomeCartorio}"></td>
                         <td th:text="${cartorio.enderecoCartorio}"></td>
-                        <td></td>
+                        <td>
+                            <a class="ui button">
+                                <i class="list alternate icon"></i>
+                            </a>
+                        </td>
                         <td>
                             <a 
-                                class="ui button primary" 
-                                th:href="@{'/deletarCartorio/' + ${cartorio.id}}"
-                            > Deletar </a>
-                            <a 
                                 class="ui button negative" 
-                                th:href="@{'/editarCartorio/' + ${cartorio.id}}"
-                            > Editar </a>
+                                th:href="@{'/deletarCartorio/' + ${cartorio.id}}"> 
+                                <i class="trash icon"></i>
+                                Deletar 
+                            </a>
+                            <a 
+                                class="ui button blue" 
+                                th:href="@{'/editarCartorio/' + ${cartorio.id}}"> 
+                                    <i class="edit icon"></i>
+                                    Editar 
+                            </a>
+                            
                         </td>
                     </tr>
                 </tbody>
