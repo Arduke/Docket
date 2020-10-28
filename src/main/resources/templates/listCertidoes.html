@@ -7,9 +7,6 @@
             padding: 15px;
             background: #545789;
             }
-            .formDocket{
-                padding-top: 20px;    
-            }
             .container{
                 padding:20px 5px 10px 5px;
                 background-color: #eaeae9;
@@ -24,9 +21,13 @@
                 display: block;
                 margin-right: 50%;
             }
+            .ButtonEmitirCertidao{
+                float: right;
+            }
         </style>
     </head>
     <body>
+        
         <div class="menuDocket">
             <div class="ui menu">
                 <div class="header item">
@@ -36,45 +37,49 @@
                 <a href ="/criarCartorio" class="item">Novo Cartório</a>
             </div>
         </div>
-        
+
+
         <div class="ui container">
-            <div class="headerDocket ui huge header">
-                <i class="clipboard list icon"></i>
-                Lista de Cartórios
-            </div>
+            
+                <div class="headerDocket ui huge header">
+                    <a th:href="@{'/criarCertidao'}" class="ButtonEmitirCertidao ui button orange">
+                        Emitir Certidão
+                    </a>
+                    
+                    <div>
+                    <i class="clipboard list icon"></i>
+                    Lista de Certidões
+                    </div>
+                </div>
+        
             <table class="ui celled table">
                 <thead>
                     <tr>
                         <th>Id</th>
                         <th>Nome</th>
-                        <th>Endereço</th>
-                        <th>Certidões</th>
+                        <th>Sobrenome</th>
+                        <th>Tipo</th>
+                        <th>Data de emissão</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
-                
                 <tbody>
-                    <tr th:each="cartorio : ${cartorios}">
-                        <td th:text="${cartorio.id}"></td>
-                        <td th:text="${cartorio.nomeCartorio}"></td>
-                        <td th:text="${cartorio.enderecoCartorio}"></td>
-                        <td>
-                            <a 
-                                th:href="@{'/listarCertidoes/' + ${cartorio.id}}"
-                                class="ui button icon">
-                                <i class="list alternate icon"></i>
-                            </a>
-                        </td>
+                    <tr th:each="certidao : ${certidoes}">
+                        <td th:text="${certidao.id}"></td>
+                        <td th:text="${certidao.nome}"></td>
+                        <td th:text="${certidao.sobrenome}"></td>
+                        <td th:text="${certidao.tipo}"></td>
+                        <td th:text="${certidao.dataEmissao}"></td>
                         <td>
                             <a 
                                 class="ui button negative" 
-                                th:href="@{'/deletarCartorio/' + ${cartorio.id}}"> 
+                                th:href="@{'/deletarCertidao/' + ${certidao.id}}"> 
                                 <i class="trash icon"></i>
                                 Deletar 
                             </a>
                             <a 
                                 class="ui button blue" 
-                                th:href="@{'/editarCartorio/' + ${cartorio.id}}"> 
+                                th:href="@{'/editarCertidao/' + ${certidao.id}}"> 
                                     <i class="edit icon"></i>
                                     Editar 
                             </a>

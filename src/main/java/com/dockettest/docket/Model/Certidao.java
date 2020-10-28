@@ -17,6 +17,7 @@ public class Certidao {
     private String nome;
     private String sobrenome;
     private String tipo;
+    private Long cartorio_id;
     private LocalDate dataEmissao = LocalDate.now();
 
     public Long getId() {
@@ -27,6 +28,14 @@ public class Certidao {
         this.id = id;
     }
 
+    public Long getCartorio_id() {
+        return cartorio_id;
+    }
+
+    public void setCartorio_id(Long idCartorio) {
+        this.cartorio_id = idCartorio;
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -101,6 +110,10 @@ public class Certidao {
             return false;
         return true;
     }
+
+	
+
+    
 
 
 }

@@ -1,7 +1,11 @@
 package com.dockettest.docket.Controller;
 
+import java.util.List;
+
 import com.dockettest.docket.Model.Cartorio;
+import com.dockettest.docket.Model.Certidao;
 import com.dockettest.docket.repository.CartorioRepository;
+import com.dockettest.docket.repository.CertidaoRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +21,8 @@ public class CartorioController {
     @Autowired
     CartorioRepository cartorioRepositorio;
 
+    @Autowired
+    CertidaoRepository certidaoRepositorio;
     //Request para as telas
 
     //Tela para criar cartório
@@ -34,14 +40,14 @@ public class CartorioController {
     //Tela para editar cartório selecionado
     @GetMapping("/editarCartorio/{id}")
     public String editarCartorio(Model model, @PathVariable(name="id") Long id){
+        
         Cartorio cartorioParaEditar = cartorioRepositorio.findById(id).get();
         
         
         model.addAttribute("cartorio", cartorioParaEditar);
         model.addAttribute("cartorios", cartorioRepositorio.findAll());
         return "editCartorio";
-    }
-    
+    }    
     
     //Request para alterar banco de dados
 

@@ -40,25 +40,25 @@
             </div>
             <form
                 th:action="@{/criarCartorio}"
-                th:object="${usuario}" 
+                th:object="${cartorio}" 
                 method="POST" 
                 class="ui form"
             >
                 <div class="four wide field">
                     <label>Identificador</label>
-                    <input class="ui input" readonly=true th:field="${cartorio.id}" type="text" placeholder="Identificador">
+                    <input required class="ui input" readonly=true th:field="${cartorio.id}" type="text" placeholder="Identificador">
                 </div>
                
                 <div class="field">
                     <label> Nome </label>
-                    <input th:field="${cartorio.nomeCartorio}" type="text" name="nomeCartório" placeholder="Nome do Cartório"/>
+                    <input required th:field="${cartorio.nomeCartorio}" type="text" name="nomeCartório" placeholder="Nome do Cartório"/>
                 </div>
                 <div class="field">
                     <label> Endereço </label>
-                    <input th:field="${cartorio.enderecoCartorio}" type="text" name="enderecoCartório" placeholder="Endereço do Cartório"/>
+                    <input required th:field="${cartorio.enderecoCartorio}" type="text" name="enderecoCartório" placeholder="Endereço do Cartório"/>
                 </div>
                 <div>
-                    <button class="ui button primary" type="submit"> Editar </button>
+                    <button class="ui button primary" type="submit"> Confirmar </button>
                     <a href="/" class="ui button right negative"> Cancelar </a>
                 </div>
             </form>

@@ -36,24 +36,29 @@
             </div>
         </div>
         
+
         <div class="ui container">
             <div class="headerDocket ui huge header">
                 <i class="paste icon"></i>
-                Cadastrar Cartório
+                Cadastrar Certidão
             </div>
             <form
-                th:action="@{/criarCartorio}"
-                th:object="${cartorio}" 
+                th:action="@{/criarCertidao}"
+                th:object="${certidao}" 
                 method="POST" 
                 class="ui form"
             >
                 <div class="field">
                     <label> Nome </label>
-                    <input required th:field="${cartorio.nomeCartorio}" type="text" name="nomeCartório" placeholder="Nome do Cartório"/>
+                    <input required th:field="${certidao.nome}" type="text" placeholder="Nome"/>
                 </div>
                 <div class="field">
-                    <label> Endereço </label>
-                    <input required th:field="${cartorio.enderecoCartorio}" type="text" name="enderecoCartório" placeholder="Endereço do Cartório"/>
+                    <label> Sobrenome </label>
+                    <input required th:field="${certidao.sobrenome}" type="text" placeholder="Sobrenome"/>
+                </div>
+                <div class="field">
+                    <label> Tipo </label>
+                    <input required th:field="${certidao.tipo}" type="text" placeholder="Tipo"/>
                 </div>
                 <div>
                     <button class="ui button primary" type="submit">Criar</button>
@@ -61,5 +66,6 @@
                 </div>
             </form>
         </div>
+     
     </body>
 </html>

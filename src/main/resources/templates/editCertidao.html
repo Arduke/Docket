@@ -6,9 +6,6 @@
             padding: 15px;
             background: #545789;
             }
-            .formDocket{
-                padding-top: 20px;
-            }
             .headerDocket{
                 color: #f3f3f3;
                 font-size: x-large;
@@ -35,29 +32,41 @@
                 <a href ="/criarCartorio" class="item">Novo Cartório</a>
             </div>
         </div>
-        
+
         <div class="ui container">
             <div class="headerDocket ui huge header">
                 <i class="paste icon"></i>
-                Cadastrar Cartório
+                Editar Cartório
             </div>
             <form
-                th:action="@{/criarCartorio}"
-                th:object="${cartorio}" 
+                th:action="@{/criarCertidao}"
+                th:object="${certidao}" 
                 method="POST" 
                 class="ui form"
             >
+                <div class="four wide field">
+                    <label>Cartorio Identificador</label>
+                    <input class="ui input" readonly=true th:field="${certidao.cartorio_id}" type="text">
+                </div>   
+                <div class="four wide field">
+                    <label>Identificador</label>
+                    <input class="ui input" readonly=true th:field="${certidao.id}" type="text">
+                </div>               
                 <div class="field">
                     <label> Nome </label>
-                    <input required th:field="${cartorio.nomeCartorio}" type="text" name="nomeCartório" placeholder="Nome do Cartório"/>
+                    <input th:field="${certidao.nome}" type="text" name="nome" placeholder="Nome"/>
                 </div>
                 <div class="field">
-                    <label> Endereço </label>
-                    <input required th:field="${cartorio.enderecoCartorio}" type="text" name="enderecoCartório" placeholder="Endereço do Cartório"/>
+                    <label> Sobrenome </label>
+                    <input th:field="${certidao.sobrenome}" type="text" name="sobrenome" placeholder="Sobreome"/>
+                </div>
+                <div class="field">
+                    <label> Tipo </label>
+                    <input th:field="${certidao.tipo}" type="text" name="tipo" placeholder="Tipo da certidão"/>
                 </div>
                 <div>
-                    <button class="ui button primary" type="submit">Criar</button>
-                    <a href="/" class="ui button negative"> Cancelar </a>
+                    <button class="ui button primary" type="submit"> Confirmar </button>
+                    <a href="/" class="ui button right negative"> Cancelar </a>
                 </div>
             </form>
         </div>

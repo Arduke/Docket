@@ -20,7 +20,7 @@ public class Cartorio {
     private String nomeCartorio;
     private String enderecoCartorio;
 
-    @JoinColumn(name="certidao_id")
+    @JoinColumn(name="cartorio_id")
     @OneToMany(cascade = CascadeType.ALL)
     public Set<Certidao> certidoes;
 
